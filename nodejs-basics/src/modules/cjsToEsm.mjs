@@ -19,14 +19,14 @@ if (random > 0.5) {
         if (err) throw new Error(err);
         console.log(JSON.parse(data));
     });
-}
+};
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
 console.log(`Path segment separator is "${sep}"`);
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 console.log(`Path to current file is ${__filename}`);
 console.log(`Path to current directory is ${__dirname}`);
 
