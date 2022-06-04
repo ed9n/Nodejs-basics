@@ -1,25 +1,25 @@
 import { sep, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { release, version } from 'os';
-import { readFile } from 'fs';
 import { createServer as createServerHttp } from 'http';
-import { } from './files/c.js';
+import { createRequire } from "module";
+
+import './files/c.js';
+
+const require = createRequire(import.meta.url);
+
+const fileJsonA = require('./files/a.json');
+const fileJsonB = require('./files/b.json');
 
 const random = Math.random();
 
 let unknownObject;
 
 if (random > 0.5) {
-    unknownObject = readFile('./files/a.json', 'utf8', (err, data) => {
-        if (err) throw new Error(err);
-        console.log(JSON.parse(data));
-    });
+    unknownObject = fileJsonA;
 } else {
-    unknownObject = readFile('./files/b.json', 'utf8', (err, data) => {
-        if (err) throw new Error(err);
-        console.log(JSON.parse(data));
-    });
-};
+    unknownObject = fileJsonB;
+}
 
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
