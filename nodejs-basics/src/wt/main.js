@@ -17,7 +17,7 @@ export const performCalculations = async () => {
         try {
             arr.push(await Workers);
         } catch {
-
+            Workers.catch(console.log)
         }
     }
     console.log(arr)
